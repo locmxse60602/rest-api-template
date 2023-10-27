@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Endpoints", "Endpoints\Endpoints.csproj", "{583D5D9D-1EDE-4FC3-9432-58E72E0E8C17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A16E35B3-5254-4CA1-A7C7-CCADE8200DFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{8226B9B2-60A4-45BE-9291-B23ACB6157B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{4F71AD02-2E44-4905-9BA4-78FB264BB780}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{6ABB8BAB-A9D7-4B62-8620-72697420720B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.Sqlite", "Migrations\EntityFrameworkCore.Sqlite\EntityFrameworkCore.Sqlite.csproj", "{3D50552A-DAD8-441E-9A7E-143B111201BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.PostgreSQL", "Migrations\EntityFrameworkCore.PostgreSQL\EntityFrameworkCore.PostgreSQL.csproj", "{A626FC98-A256-46ED-97B0-074A6F2B8EFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{583D5D9D-1EDE-4FC3-9432-58E72E0E8C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583D5D9D-1EDE-4FC3-9432-58E72E0E8C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583D5D9D-1EDE-4FC3-9432-58E72E0E8C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583D5D9D-1EDE-4FC3-9432-58E72E0E8C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16E35B3-5254-4CA1-A7C7-CCADE8200DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16E35B3-5254-4CA1-A7C7-CCADE8200DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16E35B3-5254-4CA1-A7C7-CCADE8200DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16E35B3-5254-4CA1-A7C7-CCADE8200DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8226B9B2-60A4-45BE-9291-B23ACB6157B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8226B9B2-60A4-45BE-9291-B23ACB6157B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8226B9B2-60A4-45BE-9291-B23ACB6157B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8226B9B2-60A4-45BE-9291-B23ACB6157B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F71AD02-2E44-4905-9BA4-78FB264BB780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F71AD02-2E44-4905-9BA4-78FB264BB780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F71AD02-2E44-4905-9BA4-78FB264BB780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F71AD02-2E44-4905-9BA4-78FB264BB780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D50552A-DAD8-441E-9A7E-143B111201BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D50552A-DAD8-441E-9A7E-143B111201BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D50552A-DAD8-441E-9A7E-143B111201BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D50552A-DAD8-441E-9A7E-143B111201BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D50552A-DAD8-441E-9A7E-143B111201BF} = {6ABB8BAB-A9D7-4B62-8620-72697420720B}
+		{A626FC98-A256-46ED-97B0-074A6F2B8EFB} = {6ABB8BAB-A9D7-4B62-8620-72697420720B}
+	EndGlobalSection
+EndGlobal
