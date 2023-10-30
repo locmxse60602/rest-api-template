@@ -1,11 +1,13 @@
-﻿using Domain;
+﻿using System.Text.Json;
+using Domain;
+using Domain.Interfaces;
 using Infrastructure.DbConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -63,6 +65,8 @@ public class ApplicationDbContext : DbContext
         }
         else
         {
+            var originalValues = new List<AuditLogValue>();
+            var currentValues = new List<AuditLogValue>();
             foreach (var prop in entityEntry.OriginalValues.Properties)
             {
                 var originalValue = !string.IsNullOrWhiteSpace(entityEntry.OriginalValues[prop]?.ToString())
@@ -75,17 +79,19 @@ public class ApplicationDbContext : DbContext
 
                 if (originalValue == currentValue) continue;
 
-                var changeLog = new AuditLog
-                {
-                    EntityName = entityEntry.Entity.GetType().Name,
-                    Action = entityEntry.State.ToString(),
-                    TimeStamp = timeStamp,
-                    PropertyName = prop.Name,
-                    OldValue = originalValue,
-                    NewValue = currentValue
-                };
-                await AuditLogs.AddAsync(changeLog);
+                originalValues.Add(new AuditLogValue(prop.Name, originalValue));
+                currentValues.Add(new AuditLogValue(prop.Name, currentValue));
             }
+
+            var changeLog = new AuditLog
+            {
+                EntityName = entityEntry.Entity.GetType().Name,
+                Action = entityEntry.State.ToString(),
+                TimeStamp = timeStamp,
+                OldValues = JsonSerializer.Serialize(originalValues),
+                NewValues = JsonSerializer.Serialize(currentValues)
+            };
+            await AuditLogs.AddAsync(changeLog);
         }
     }
 
