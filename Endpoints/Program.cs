@@ -1,4 +1,5 @@
-using EntityFrameworkCore.PostgreSQL;
+using EntityFrameworkCore.MySQL;
+using EntityFrameworkCore.PostgreSql;
 using EntityFrameworkCore.Sqlite;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -10,18 +11,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var provider = builder.Configuration.GetValue<string>("DatabaseProvider");
 
-    if ("Sqlite".Equals(provider))
+    switch (provider)
     {
-        options.UseSqlite(
-            builder.Configuration.GetConnectionString("Sqlite")!,
-            x => x.MigrationsAssembly(typeof(Sqlite).Assembly.GetName().Name)
-        );
-    }
-    if ("Postgres".Equals(provider)) {
-        options.UseNpgsql(
-            builder.Configuration.GetConnectionString("Postgres")!,
-            x => x.MigrationsAssembly(typeof(Postgres).Assembly.GetName().Name)
-        );
+        case "Sqlite":
+            options.UseSqlite(
+                builder.Configuration.GetConnectionString("Sqlite")!,
+                x => x.MigrationsAssembly(typeof(Sqlite).Assembly.GetName().Name)
+            );
+            break;
+        case "Postgres":
+            options.UseNpgsql(
+                builder.Configuration.GetConnectionString("Postgres")!,
+                x => x.MigrationsAssembly(typeof(Postgres).Assembly.GetName().Name)
+            );
+            break;
+        case "MySql":
+            var serverVersion = new MySqlServerVersion(builder.Configuration.GetValue<string>("ConnectionStringProps:MySqlVersion"));
+            options.UseMySql(builder.Configuration.GetConnectionString("Postgres")!, serverVersion,
+                x => x.MigrationsAssembly(typeof(MySql).Assembly.GetName().Name));
+            break;
     }
 });
 

@@ -13,9 +13,6 @@ public static class ServiceCollectionExtensions
     //   The service collection with the application module added.
     public static IServiceCollection AddApplicationModule(this IServiceCollection services)
     {
-        return services.AddMediatR((c) =>
-        {
-            c.RegisterServicesFromAssembly(typeof(Application).Assembly);
-        });
+        return services.AddMediatR(c => { c.RegisterServicesFromAssembly(typeof(Application).Assembly); });
     }
 }

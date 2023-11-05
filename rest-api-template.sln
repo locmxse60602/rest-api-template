@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.Sqlite", "Migrations\EntityFrameworkCore.Sqlite\EntityFrameworkCore.Sqlite.csproj", "{3D50552A-DAD8-441E-9A7E-143B111201BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.PostgreSQL", "Migrations\EntityFrameworkCore.PostgreSQL\EntityFrameworkCore.PostgreSQL.csproj", "{A626FC98-A256-46ED-97B0-074A6F2B8EFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.PostgreSql", "Migrations\EntityFrameworkCore.PostgreSql\EntityFrameworkCore.PostgreSql.csproj", "{A626FC98-A256-46ED-97B0-074A6F2B8EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore.MySql", "Migrations\EntityFrameworkCore.MySql\EntityFrameworkCore.MySql.csproj", "{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,9 +46,14 @@ Global
 		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A626FC98-A256-46ED-97B0-074A6F2B8EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3D50552A-DAD8-441E-9A7E-143B111201BF} = {6ABB8BAB-A9D7-4B62-8620-72697420720B}
 		{A626FC98-A256-46ED-97B0-074A6F2B8EFB} = {6ABB8BAB-A9D7-4B62-8620-72697420720B}
+		{9A0E4B82-D2A5-4F9F-B30A-5FC26C61FD48} = {6ABB8BAB-A9D7-4B62-8620-72697420720B}
 	EndGlobalSection
 EndGlobal

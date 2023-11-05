@@ -6,5 +6,4 @@ namespace Endpoints.Controllers;
 [Authorize]
 public class AuthorizedControllerBase : ControllerBase
 {
-    
 }

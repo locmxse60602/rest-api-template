@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using Domain;
 using Domain.Interfaces;
-using Infrastructure.DbConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -39,7 +38,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         foreach (var entityEntry in entityEntries)
         {
             IncrementVersionNumber(entityEntry);
-            if (entityEntry.Entity is IAuditable) await CreateAuditAsync(entityEntry, now);
+            if (entityEntry.Entity is IAuditable)
+            {
+                await CreateAuditAsync(entityEntry, now);
+            }
         }
     }
 
@@ -77,7 +79,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
                     ? entityEntry.CurrentValues[prop]?.ToString()
                     : null;
 
-                if (originalValue == currentValue) continue;
+                if (originalValue == currentValue)
+                {
+                    continue;
+                }
 
                 originalValues.Add(new AuditLogValue(prop.Name, originalValue));
                 currentValues.Add(new AuditLogValue(prop.Name, currentValue));
@@ -101,7 +106,11 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     //   entityEntry: The entity entry to increment the version number for.
     private static void IncrementVersionNumber(EntityEntry entityEntry)
     {
-        if (entityEntry.Metadata.FindProperty("Version") == null) return;
+        if (entityEntry.Metadata.FindProperty("Version") == null)
+        {
+            return;
+        }
+
         var currentVersionNumber = Convert.ToInt32(entityEntry.CurrentValues["Version"]);
         entityEntry.CurrentValues["Version"] = currentVersionNumber + 1;
     }

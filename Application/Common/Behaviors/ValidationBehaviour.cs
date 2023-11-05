@@ -28,10 +28,14 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
     // Returns:
     //   A task that represents the asynchronous operation. The task result contains
     //   the response object.
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
     {
-        if (!_validators.Any()) return await next();
-        
+        if (!_validators.Any())
+        {
+            return await next();
+        }
+
         var context = new ValidationContext<TRequest>(request);
 
         var validationResults = await Task.WhenAll(
@@ -44,8 +48,10 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
             .ToList();
 
         if (failures.Any())
+        {
             throw new ValidationException(failures);
-        
+        }
+
         return await next();
     }
 }

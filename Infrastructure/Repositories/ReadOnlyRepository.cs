@@ -23,7 +23,8 @@ public class ReadOnlyRepository<T> : IReadOnlyRepository<T> where T : class
         return _applicationDbContext.Set<T>().AsQueryable().Where(filter);
     }
 
-    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter, Dictionary<string, string> sortProperties,
+    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter,
+        Dictionary<string, string> sortProperties,
         int take, int skip)
     {
         var queryable = GetFilterQueryable(filter);
