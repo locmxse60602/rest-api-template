@@ -1,6 +1,7 @@
 using Application.TestModule.Commands;
 using Domain;
 using Domain.Common.Dtos;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

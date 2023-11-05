@@ -1,3 +1,4 @@
+using Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
@@ -5,7 +6,7 @@ namespace Application;
 public static class ServiceCollectionExtensions
 {
     // Adds the application module to the service collection.
-    // 
+    //
     // Parameters:
     //   services: The service collection to add the application module to.
     //
@@ -13,6 +14,7 @@ public static class ServiceCollectionExtensions
     //   The service collection with the application module added.
     public static IServiceCollection AddApplicationModule(this IServiceCollection services)
     {
-        return services.AddMediatR(c => { c.RegisterServicesFromAssembly(typeof(Application).Assembly); });
+        return services
+            .AddMediatR(c => { c.RegisterServicesFromAssembly(typeof(Application).Assembly); });
     }
 }

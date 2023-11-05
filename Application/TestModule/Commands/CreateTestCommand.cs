@@ -3,6 +3,7 @@
 
 using Domain;
 using Domain.Common.Dtos;
+using Domain.Entities;
 using MediatR;
 
 namespace Application.TestModule.Commands;

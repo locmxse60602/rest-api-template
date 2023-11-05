@@ -8,8 +8,10 @@ public interface IReadOnlyRepository<T> where T : class
 
     IQueryable<T> GetFilterQueryable(Expression<Func<T, bool>> filter);
 
-    Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter, Dictionary<string, string> sortProperties,
+    Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>> filter, Dictionary<string, string> sortProperties,
         int take, int skip);
 
-    Task<T> GetAsync(string id);
+    Task<T?> GetByIdAsync(string id);
+
+    Task<T?> GetOnceAsync(Expression<Func<T, bool>> filter);
 }

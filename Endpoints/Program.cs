@@ -2,6 +2,7 @@ using EntityFrameworkCore.MySQL;
 using EntityFrameworkCore.PostgreSql;
 using EntityFrameworkCore.Sqlite;
 using Infrastructure;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

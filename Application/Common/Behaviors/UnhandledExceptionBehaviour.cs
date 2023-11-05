@@ -27,7 +27,7 @@ public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavio
     {
         try
         {
-            return await next();
+            return await next().ConfigureAwait(false);
         }
         catch (Exception ex)
         {

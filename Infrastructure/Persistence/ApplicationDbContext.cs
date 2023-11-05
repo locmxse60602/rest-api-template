@@ -1,10 +1,11 @@
 ﻿using System.Text.Json;
 using Domain;
+using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Infrastructure;
+namespace Infrastructure.Persistence;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
@@ -23,7 +24,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     // Performs an audit of the changes made in the current context.
     // This method asynchronously generates an audit for each entity that has been added, modified, or deleted.
-    // The audit includes incrementing the version number of the entity and creating an audit record if the entity implements the IAuditable interface.
+    // The audit includes incrementing the version number of the entity and creating an audit record if the entity implements the IEntityBase interface.
     // The audit is performed using the current date and time in UTC format.
     // This method returns a Task representing the asynchronous operation.
     private async Task AuditChanges()
@@ -38,7 +39,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         foreach (var entityEntry in entityEntries)
         {
             IncrementVersionNumber(entityEntry);
-            if (entityEntry.Entity is IAuditable)
+            if (entityEntry.Entity is IEntityBase)
             {
                 await CreateAuditAsync(entityEntry, now);
             }
@@ -46,7 +47,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     }
 
     // Creates an audit log for the given entity entry and timestamp.
-    // 
+    //
     // Parameters:
     //   entityEntry: The EntityEntry object representing the entity being audited.
     //   timeStamp: The timestamp of the audit log creation.

@@ -1,8 +1,9 @@
 using Domain;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure;
+namespace Infrastructure.Persistence;
 
 public class TestTypeConfiguration : IEntityTypeConfiguration<Test>
 {
